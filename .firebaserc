@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "docng-84e4a": {
+      "hosting": {
+        "DocNg": [
+          "docng-84e4a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "docng-84e4a"
+  }
+}

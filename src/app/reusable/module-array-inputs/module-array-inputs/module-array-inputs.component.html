@@ -1,0 +1,47 @@
+<ng-container [formGroup]="form">
+  <div class="col-md-12 mb-3" *ngIf="!formArray?.controls?.length">
+    <div class="border rounded dashed p-3 text-center pointer" (click)="insertControl()">Add {{label!!}}</div>
+  </div>
+
+  <div class="col-12" *ngIf="formArray?.length">
+    <mat-label class="fw-bold mb-2">{{label}}</mat-label>
+
+    <div class="row" formArrayName="formArray"
+      *ngFor="let control of formArray?.controls; let i = index; let last = last">
+
+      <ng-container [formGroupName]="i">
+        {{i}}
+      <div class="col-md-4">
+        <div class="example-container w-100">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="name" formControlName="name" (blur)="handleOnToutched()">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="example-container w-100">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Path</mat-label>
+            <input matInput placeholder="path" formControlName="path" (blur)="handleOnToutched()">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col d-flex">
+        <div class="example-button-container p-2">
+          <button mat-mini-fab color="warn" type="button" (click)="removeControl(i)">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+        <div class="example-button-container p-2" *ngIf="last">
+          <button mat-mini-fab color="primary" type="button" (click)="insertControl()">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</ng-container>

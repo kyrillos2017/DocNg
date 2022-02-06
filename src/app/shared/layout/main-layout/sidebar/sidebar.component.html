@@ -1,0 +1,5 @@
+<ul class="p-3 list-unstyled">
+  <li matRipple
+  class="rounded pointer"
+  *ngFor="let item of (module$ | async)">{{item?.class}}</li>
+</ul>

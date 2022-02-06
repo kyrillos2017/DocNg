@@ -1,0 +1,31 @@
+<!-- <app-navbar></app-navbar> -->
+
+<!-- <mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+  <mat-drawer-content>
+    <div class="container my-4">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container> -->
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <app-navbar (toggleSidebar)="snav.toggle()"></app-navbar>
+
+  <mat-sidenav-container [autosize]="true" class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" [opened]="true">
+      <mat-nav-list>
+       <app-sidebar></app-sidebar>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="p-3">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

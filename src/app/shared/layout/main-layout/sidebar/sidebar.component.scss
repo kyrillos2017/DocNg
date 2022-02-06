@@ -1,0 +1,10 @@
+li{
+  min-width: 150px;
+  text-align: center;
+  padding: 10px 15px;
+  transition: .3s;
+
+  &:hover{
+    background-color: rgba(230, 230, 230, 0.397);
+  }
+}

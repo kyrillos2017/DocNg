@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>{{data ? 'Edit Module': 'Create Module'}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" class="row w-100 m-0">
+    <!-- name -->
+    <div class="col-md-4">
+      <div class="example-container w-100">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" required>
+          <mat-error *ngIf="form.controls['name']?.invalid">name is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- className -->
+    <div class="col-md-4">
+      <div class="example-container w-100">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Class Name</mat-label>
+          <input matInput placeholder="Class Name" formControlName="class">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- declarations -->
+    <app-module-array-inputs label="declarations" formControlName="declarations" ></app-module-array-inputs>
+
+    <!-- imports -->
+    <app-module-array-inputs label="imports" formControlName="imports" ></app-module-array-inputs>
+
+    <!-- exports -->
+    <app-module-array-inputs label="exports" formControlName="exports" ></app-module-array-inputs>
+
+    <!-- providers -->
+    <app-module-array-inputs label="providers" formControlName="providers" ></app-module-array-inputs>
+
+
+    <div class="col-12 mb-3">
+      <mat-label class="fw-bold mb-2">Description</mat-label>
+      <p-editor formControlName="description" [style]="{'height':'200px'}"></p-editor>
+    </div>
+
+    <div class="col-12">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Source</mat-label>
+        <textarea matInput formControlName="source"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()">Save</button>
+</mat-dialog-actions>
